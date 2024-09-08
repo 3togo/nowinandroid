@@ -41,6 +41,7 @@ import androidx.compose.foundation.lazy.staggeredgrid.StaggeredGridCells
 import androidx.compose.foundation.lazy.staggeredgrid.StaggeredGridItemSpan
 import androidx.compose.foundation.lazy.staggeredgrid.rememberLazyStaggeredGridState
 import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.foundation.text.BasicText
 import androidx.compose.foundation.text.ClickableText
 import androidx.compose.foundation.text.KeyboardActions
 import androidx.compose.foundation.text.KeyboardOptions
@@ -243,22 +244,47 @@ fun EmptySearchResultBody(
             append(" ")
             append(stringResource(id = searchR.string.feature_search_to_browse_topics))
         }
-        ClickableText(
-            text = tryAnotherSearchString,
+//        ClickableText(
+//            text = tryAnotherSearchString,
+//            style = MaterialTheme.typography.bodyLarge.merge(
+//                TextStyle(
+//                    color = MaterialTheme.colorScheme.secondary,
+//                    textAlign = TextAlign.Center,
+//                ),
+//            ),
+//            modifier = Modifier
+//                .padding(start = 36.dp, end = 36.dp, bottom = 24.dp)
+//                .clickable {},
+//        ) { offset ->
+//            tryAnotherSearchString.getStringAnnotations(start = offset, end = offset)
+//                .firstOrNull()
+//                ?.let { onInterestsClick() }
+//        }
+        val annotatedString = buildAnnotatedString {
+            withStyle(style = SpanStyle(color = MaterialTheme.colorScheme.secondary)) {
+                append(tryAnotherSearchString)
+            }
+            addStringAnnotation(
+                tag = "URL",
+                annotation = "https://example.com", // Replace with your URL
+                start = 0,
+                end = tryAnotherSearchString.length
+            )
+        }
+        BasicText(
+            text = annotatedString,
             style = MaterialTheme.typography.bodyLarge.merge(
                 TextStyle(
                     color = MaterialTheme.colorScheme.secondary,
-                    textAlign = TextAlign.Center,
-                ),
+                    textAlign = TextAlign.Center
+                )
             ),
             modifier = Modifier
                 .padding(start = 36.dp, end = 36.dp, bottom = 24.dp)
-                .clickable {},
-        ) { offset ->
-            tryAnotherSearchString.getStringAnnotations(start = offset, end = offset)
-                .firstOrNull()
-                ?.let { onInterestsClick() }
-        }
+                .clickable {
+                    annotatedString.getStringAnnotations("URL", 0, -1).firstOrNull()?.let { onInterestsClick() }
+                }
+        )
     }
 }
 
