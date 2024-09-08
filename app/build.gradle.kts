@@ -121,7 +121,7 @@ dependencies {
     testDemoImplementation(libs.roborazzi)
     testDemoImplementation(projects.core.screenshotTesting)
 
-    androidTestImplementation(kotlin("test"))
+    androidTestImplementation("org.jetbrains.kotlin:kotlin-test:2.0.20")
     androidTestImplementation(projects.core.testing)
     androidTestImplementation(projects.core.dataTest)
     androidTestImplementation(projects.core.datastoreTest)
