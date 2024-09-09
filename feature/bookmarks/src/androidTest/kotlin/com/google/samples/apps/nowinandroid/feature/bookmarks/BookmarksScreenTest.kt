@@ -1,5 +1,5 @@
 /*
- * Copyright 2022 The Android Open Source Project
+ * Copyright 2024 The Android Open Source Project
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -178,7 +178,7 @@ class BookmarksScreenTest {
         val testLifecycleOwner = TestLifecycleOwner(initialState = Lifecycle.State.STARTED)
 
         composeTestRule.setContent {
-            CompositionLocalProvider(LocalLifecycleOwner provides testLifecycleOwner) {
+            CompositionLocalProvider(androidx.lifecycle.compose.LocalLifecycleOwner provides testLifecycleOwner) {
                 BookmarksScreen(
                     feedState = NewsFeedUiState.Success(emptyList()),
                     onShowSnackbar = { _, _ -> false },

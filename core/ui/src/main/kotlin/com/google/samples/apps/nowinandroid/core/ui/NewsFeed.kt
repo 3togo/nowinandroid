@@ -1,5 +1,5 @@
 /*
- * Copyright 2022 The Android Open Source Project
+ * Copyright 2024 The Android Open Source Project
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -65,6 +65,8 @@ fun LazyStaggeredGridScope.newsFeed(
                 val analyticsHelper = LocalAnalyticsHelper.current
                 val backgroundColor = MaterialTheme.colorScheme.background.toArgb()
 
+                Modifier
+                    .padding(horizontal = 8.dp)
                 NewsResourceCardExpanded(
                     userNewsResource = userNewsResource,
                     isBookmarked = userNewsResource.isSaved,
@@ -85,9 +87,7 @@ fun LazyStaggeredGridScope.newsFeed(
                         )
                     },
                     onTopicClick = onTopicClick,
-                    modifier = Modifier
-                        .padding(horizontal = 8.dp)
-                        .animateItemPlacement(),
+                    modifier = Modifier.animateItem(fadeInSpec = null, fadeOutSpec = null),
                 )
             }
         }

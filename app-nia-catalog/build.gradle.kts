@@ -1,5 +1,5 @@
 /*
- * Copyright 2022 The Android Open Source Project
+ * Copyright 2024 The Android Open Source Project
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -61,10 +61,6 @@ android {
             // TODO: Abstract the signing configuration to a separate file to avoid hardcoding this.
             signingConfig = signingConfigs.named("debug").get()
         }
-    }
-    compileOptions {
-        sourceCompatibility = JavaVersion.VERSION_11
-        targetCompatibility = JavaVersion.VERSION_11
     }
     compileSdk = 34
     buildToolsVersion = "34.0.0"

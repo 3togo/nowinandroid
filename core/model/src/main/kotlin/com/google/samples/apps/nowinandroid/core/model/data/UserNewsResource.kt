@@ -1,5 +1,5 @@
 /*
- * Copyright 2023 The Android Open Source Project
+ * Copyright 2024 The Android Open Source Project
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -22,7 +22,7 @@ import kotlinx.datetime.Instant
  * A [NewsResource] with additional user information such as whether the user is following the
  * news resource's topics and whether they have saved (bookmarked) this news resource.
  */
-data class UserNewsResource internal constructor(
+data class UserNewsResource(
     val id: String,
     val title: String,
     val content: String,
