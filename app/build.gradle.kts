@@ -14,6 +14,7 @@
  * limitations under the License.
  */
 import com.google.samples.apps.nowinandroid.NiaBuildType
+import org.apache.tools.ant.util.JavaEnvUtils.VERSION_11
 
 plugins {
     alias(libs.plugins.nowinandroid.android.application)
@@ -70,6 +71,13 @@ android {
         }
     }
     namespace = "com.google.samples.apps.nowinandroid"
+    compileOptions {
+        sourceCompatibility = JavaVersion.VERSION_11
+        targetCompatibility = JavaVersion.VERSION_11
+    }
+    compileSdk = 34
+    buildToolsVersion = "34.0.0"
+    ndkVersion = "27.1.12297006"
 }
 
 dependencies {
@@ -121,7 +129,7 @@ dependencies {
     testDemoImplementation(libs.roborazzi)
     testDemoImplementation(projects.core.screenshotTesting)
 
-    androidTestImplementation("org.jetbrains.kotlin:kotlin-test:2.0.20")
+    androidTestImplementation(libs.kotlin.test)
     androidTestImplementation(projects.core.testing)
     androidTestImplementation(projects.core.dataTest)
     androidTestImplementation(projects.core.datastoreTest)

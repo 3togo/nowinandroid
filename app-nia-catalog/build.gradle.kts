@@ -62,6 +62,13 @@ android {
             signingConfig = signingConfigs.named("debug").get()
         }
     }
+    compileOptions {
+        sourceCompatibility = JavaVersion.VERSION_11
+        targetCompatibility = JavaVersion.VERSION_11
+    }
+    compileSdk = 34
+    buildToolsVersion = "34.0.0"
+    ndkVersion = "27.1.12297006"
 }
 
 dependencies {

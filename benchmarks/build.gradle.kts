@@ -54,6 +54,13 @@ android {
     }
 
     targetProjectPath = ":app"
+    compileOptions {
+        sourceCompatibility = JavaVersion.VERSION_11
+        targetCompatibility = JavaVersion.VERSION_11
+    }
+    compileSdk = 34
+    buildToolsVersion = "34.0.0"
+    ndkVersion = "27.1.12297006"
     experimentalProperties["android.experimental.self-instrumenting"] = true
 }
 
